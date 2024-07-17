@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Loader from './Loader'
 import NoteCard from './NoteCard'
 
@@ -7,7 +8,7 @@ const NoteCardContainer = ({notes,loading}) => {
         <div className="note-has-grid row">
 
          {loading && <Loader loading={loading} />}
-            {notes.map(note => <NoteCard key={note.id} note={note} />)}
+            {notes.map((note,index) => <NoteCard key={note.id || index} note={note} />)}
         </div>
      </div>
   )

@@ -1,4 +1,5 @@
-import ClipLoader from "react-spinners/ClipLoader"
+/* eslint-disable react/prop-types */
+import { PropagateLoader } from "react-spinners";
 
 const override = {
     display: "block",
@@ -8,10 +9,10 @@ const override = {
 
 const Loader = ({loading}) => {
   return (
-    <ClipLoader
+    <PropagateLoader
         loading={loading}
         cssOverride={override}
-        size={50}
+        size={15}
         aria-label="Loading Spinner"
         data-testid="loader"
       />

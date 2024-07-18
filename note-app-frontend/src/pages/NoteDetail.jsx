@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 import { BiSolidTrashAlt } from 'react-icons/bi';
 import './NoteDetail.css';
 import { FiEdit } from 'react-icons/fi';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { FormatDate } from '../component/FormatDate';
 import Modal from './../component/Modal';
+import { FormatDate } from '../component/FormatDate';
 
 
 const NoteDetail = ({deleteNote}) => {

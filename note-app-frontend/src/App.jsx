@@ -6,8 +6,8 @@ import AddNotePage from "./pages/AddNotePage"
 import NoteDetail from "./pages/NoteDetail"
 import EditNotePage from "./pages/EditNotePage"
 import { useEffect, useState } from "react"
-import axios from "axios"
 import { toast } from "react-toastify"
+import axios from "axios"
 
 const App = () => {
   const [notes,setNotes] = useState([]);

@@ -8,6 +8,7 @@ def main():
     """Run administrative tasks."""
     # changes
     settings_module = 'notes_app.deployment' if 'WEBSITE_HOSTNAME' in os.environ else 'notes_app.settings'
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
     try:

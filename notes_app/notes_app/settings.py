@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 # from dotenv import load_dotenv
-# import os
+import os
 
 # load_dotenv()
 
@@ -75,6 +75,8 @@ TEMPLATES = [
         },
     },
 ]
+
+STATIC_ROOT = BASE_DIR/'staticfiles'
 
 WSGI_APPLICATION = 'notes_app.wsgi.application'
 

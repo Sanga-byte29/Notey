@@ -20,6 +20,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'https://calm-water-0f5f1a403.5.azurestaticapps.net'
+]
+
+
 # CORS_ALLOWED_ORIGINS = [
 # "http://localhost:5173",
 # "http://localhost:5173",

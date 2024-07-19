@@ -18,6 +18,21 @@ class Note(models.Model):
     
     def __str__(self):
         return self.title
+
+class TestModel(models.Model):
+    CATEGORY = (('BUSINESS', 'Business'),
+                ('PERSONAL', 'Personal'),
+                ('IMPORTANT', 'Important'))
+    title = models.CharField(max_length=100)
+    body = models.TextField()
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    category = models.CharField(max_length=15, choices=CATEGORY, default="PERSONAL")
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    
+    
+    def __str__(self):
+        return self.title
     
     def save(self, *args, **kwargs):
         if not self.slug:

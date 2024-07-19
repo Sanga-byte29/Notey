@@ -9,6 +9,11 @@ import { useEffect, useState } from "react"
 import { toast } from "react-toastify"
 import axios from "axios"
 
+const isDevelopment = import.meta.env.MODE === 'development'
+const baseUrl2 = isDevelopment ? import.meta.env.VITE_API_BASE_URL_LOCAL : import.meta.env.VITE_API_BASE_URL_PROD
+
+console.log("BASE URL: ", baseUrl2 )
+
 const App = () => {
   const [notes,setNotes] = useState([]);
   const [isLoading,setIsLoading] = useState(false);
@@ -38,10 +43,10 @@ const App = () => {
     //for search functionality i use useEffect hook 
     useEffect(() => {
       if(searchText.length < 3) return ;
-      axios.get(`http://127.0.0.1:8008/notes-search/?search=${searchText}`)
+      axios.get(`${baseUrl2}notes-search/?search=${searchText}`)
       .then(res => {
-        console.log(res.data)
         setNotes(res.data)
+        console.log(res.data)
       })
       .catch(err => console.log(err.message));
     },[searchText])
@@ -51,7 +56,7 @@ const App = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get('http://127.0.0.1:8008/notes/')
+    axios.get(`${baseUrl2}notes/`)
     .then(res => {
       console.log(res.data);
       setNotes(res.data);
@@ -63,7 +68,7 @@ const App = () => {
   },[])
 
   const addNote = (data) => {
-    axios.post('http://127.0.0.1:8008/notes/',data)
+    axios.post(`${baseUrl2}notes/`,data)
     .then(res => {
       setNotes([...notes,data]);
       toast.success("New Note Added")
@@ -75,7 +80,7 @@ const App = () => {
   }
 
   const updateNode = (data,slug) => {
-    axios.put(`http://127.0.0.1:8008/notes/${slug}/`,data)
+    axios.put(`${baseUrl2}notes/${slug}/`,data)
     .then((res) => {
       setNotes([...notes,data]);
       console.log(res.data);
@@ -85,7 +90,7 @@ const App = () => {
   }
 
   const deleteNote = (slug) => {
-    axios.delete(`http://127.0.0.1:8008/notes/${slug}/`)
+    axios.delete(`${baseUrl2}notes/${slug}/`)
     .then((res) => {
       setNotes([...notes])
     })

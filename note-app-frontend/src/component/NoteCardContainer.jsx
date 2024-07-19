@@ -8,7 +8,11 @@ const NoteCardContainer = ({notes,loading}) => {
         <div className="note-has-grid row">
 
          {loading && <Loader loading={loading} />}
-            {notes.map((note,index) => <NoteCard key={note.id || index} note={note} />)}
+         {Array.isArray(notes) ? notes.map((note, index) => (
+          <NoteCard key={note.id || index} note={note} />
+        )) : (
+          <div>No notes available</div>
+        )}
         </div>
      </div>
   )
